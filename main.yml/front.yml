@@ -1,0 +1,30 @@
+--- # frontend playbook
+- name: frontend
+  hosts: all
+  connection: ssh
+  become: yes
+  gather_facts: yes
+
+- name: install latest version nginx
+  ansible.builtin.yum:
+    name: nginx
+    state: latest
+
+- name: Start service nginx, if not started
+  ansible.builtin.service:
+    name: nginx
+    state: started
+
+- name: download the HTML content
+  ansible.builtin.get_url:
+    url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp/frontend.zip
+
+- name: Change directory to html
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+
+- name: Extract files
+  ansible.builtin.unarchive:
+    src: /tmp/frontend.zip
+    dest: frontend-main/* .
