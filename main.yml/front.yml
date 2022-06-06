@@ -1,24 +1,4 @@
---- # frontend playbook
-- name: install Nginx
+- name: Install Nginx
   ansible.builtin.yum:
-     name: Nginx
-     state: installed
-#
-#- name: Start service nginx, if not started
-#  ansible.builtin.service:
-#    name: nginx
-#    state: started
-#
-#- name: download the HTML content
-#  ansible.builtin.get_url:
-#    url: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-#    dest: /tmp/frontend.zip
-#
-#- name: Change directory to html
-#  ansible.builtin.file:
-#    path: /usr/share/nginx/html
-#
-#- name: Extract files
-#  ansible.builtin.unarchive:
-#    src: /tmp/frontend.zip
-#    dest: frontend-main/* .
+    name: nginx
+    state: installed
