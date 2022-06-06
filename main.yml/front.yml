@@ -1,8 +1,8 @@
 --- # frontend playbook
 - name: install Nginx
   ansible.builtin.yum:
-    - Nginx
-      state: present
+     name: Nginx
+     state: installed
 #
 #- name: Start service nginx, if not started
 #  ansible.builtin.service:
