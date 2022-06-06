@@ -1,12 +1,7 @@
 --- # frontend playbook
-- name: frontend
-  connection: ssh
-  become: yes
-  gather_facts: yes
-
-- name: install latest version nginx
+- name: install latest version Nginx
   ansible.builtin.yum:
-    name: nginx
+    name: Nginx
     state: present
 
 - name: Start service nginx, if not started
